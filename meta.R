@@ -59,10 +59,14 @@ library(org.Hs.eg.db)
 library(golite)
 txdb = TxDb.Hsapiens.UCSC.hg19.knownGene
 all_eids_hg19 <- names(exonsBy(txdb,by = "gene"))
-map_index <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "BP")
+map_index <- gene2go( all_eids_hg19 ,OrgDB = org.Hs.eg.db, Category = "BP")
 GO_gene_lst <- split(map_index$GO,map_index$ENTREZID)
 GOslim_gene_lst <- lapply(GO_gene_lst,exact2slim,Category = "BP")
-write.rds(GOslim_gene_lst,"GOslim_gene_lst_BP.rds")
+saveRDS(GOslim_gene_lst,"GOslim_gene_lst_BP.rds")
+
+#nohup Rscript goslim_BP.R > goslim_BP.out &
+#nohup Rscript goslim_CC.R > goslim_CC.out &
+#nohup Rscript goslim_MF.R > goslim_MF.out &
 
 map_index_cc <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "CC")
 map_index_mf <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "MF")
