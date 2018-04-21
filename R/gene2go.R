@@ -5,7 +5,7 @@
 #' @param OrgDB an \code{OrgDb} object defined by AnnotationDbi.
 #' @param Category a character specifying the gene ontology category, can be one in "BP", "CC", and "MF", default "BP".
 #' @param Drop_zero_match whether to drop the genes that mapped to no terms at all, default FALSE.
-#' @importFrom select AnnotationDbi
+#' @importFrom AnnotationDbi select
 #' @export
 gene2go <- function(Gene_ID,
                    Gene_key_type = "ENTREZID",

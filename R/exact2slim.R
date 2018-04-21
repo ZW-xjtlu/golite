@@ -6,8 +6,7 @@
 #' @param Unique wheather to unique the mapped GO slim term of each GO exact term.
 #' @return a \code{data.frame} indicating the mapping index between query GO exact terms and its GO slim terms.
 #'
-#' @importFrom goSlim GSEABase
-#' @importFrom GOCollection GSEABase
+#' @importFrom GSEABase goSlim GOCollection
 #' @export
 exact2slim <- function(Exact_terms,
                        Slim_collection = NULL,

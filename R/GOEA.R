@@ -13,7 +13,7 @@
 #' @param pvalue_correction method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".
 #' @param interpret_term whether to let the GO term readable, default FALSE.
 #' @param show_gene_name whether to attach readable gene names for each GO term, default FALSE.
-#' @importFrom select AnnotationDbi
+#' @importFrom AnnotationDbi select
 #' @export
 GOEA <- function(gene_set,
                  back_ground,
