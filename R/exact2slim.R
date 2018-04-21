@@ -15,7 +15,7 @@ exact2slim <- function(Exact_terms,
                        Exclude_self_slim = F,
                        Unique = T) {
 
-  if(is.na(Exact_terms)) return(NA)
+  if(all(is.na(Exact_terms))) return(NA)
 
   if(is.null(Slim_collection)) Slim_collection = slim_generic
 

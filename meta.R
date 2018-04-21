@@ -54,11 +54,16 @@ exact2slim(NA)
 #GO slim mapping for each individual genes
 
 #vi get indx map: BP
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(org.Hs.eg.db)
+library(golite)
 txdb = TxDb.Hsapiens.UCSC.hg19.knownGene
 all_eids_hg19 <- names(exonsBy(txdb,by = "gene"))
-library(org.Hs.eg.db)
+map_index <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "BP")
+GO_gene_lst <- split(map_index$GO,map_index$ENTREZID)
+GOslim_gene_lst <- lapply(GO_gene_lst,exact2slim,Category = "BP")
+write.rds(GOslim_gene_lst,"GOslim_gene_lst_BP.rds")
 
-map_index_bp <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "BP")
 map_index_cc <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "CC")
 map_index_mf <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "MF")
 
