@@ -4,10 +4,10 @@
 \alias{GOEA}
 \title{Vectorized function to enrich GO exact terms with a list of gene sets against a common background.}
 \usage{
-GOEA(gene_set, back_ground, orgDb, category = "BP", ID_type = "ENTREZID",
+GOEA(gene_set, back_ground, orgDb, category = "BP", gene_key = "ENTREZID",
   min_bg_count = 1, max_bg_count = 1000, EASE_Score = F,
   pvalue_correction = "BH", interpret_term = F, show_gene_name = F,
-  attach_slim = F, exclude_root_slim = F, exclude_zero_slim = T)
+  attach_slim = F, exclude_root_slim = F)
 }
 \arguments{
 \item{gene_set}{a list of character vectors contains gene IDs of the query gene sets.}
@@ -18,11 +18,11 @@ GOEA(gene_set, back_ground, orgDb, category = "BP", ID_type = "ENTREZID",
 
 \item{category}{a character specifying the gene ontology category, can be one in "BP", "CC", and "MF", default "BP".}
 
-\item{ID_type}{a character specifying the type of the ID, the available types of the keys can be find using \code{keytypes(org.Hs.eg.db)}, default "ENTREZID".}
+\item{gene_key}{a character specifying the type of the gene ID, the available types of the keys can be find using \code{keytypes(org.Hs.eg.db)}, default "ENTREZID".}
 
-\item{min_bg_count}{term minimum number of count in background gene set; default 1.}
+\item{min_bg_count}{term minimum number of occurence in background gene set; default 1.}
 
-\item{max_bg_count}{term maximum number of count in background gene set; default 1000.}
+\item{max_bg_count}{term maximum number of occurence in background gene set; default 1000.}
 
 \item{EASE_Score}{whether or not use EASE score method. (a more conservative hypergeomatric test calculation used in DAVID)
 for more details please refer to \url{https://david.ncifcrf.gov/helps/functional_annotation.html#fisher}, default FALSE.}
@@ -31,14 +31,10 @@ for more details please refer to \url{https://david.ncifcrf.gov/helps/functional
 
 \item{interpret_term}{whether to let the GO term readable, default FALSE.}
 
-\item{show_gene_name}{whether to let the gene name readable, default FALSE.}
-
-\item{attach_slim}{whether to include additional collumn indicating the slim terms for each GO, default FALSE.}
-
-\item{exclude_root_slim}{whether to exclude the GO slim terms that labeling "BP", "CC", or "MF", default TRUE.}
+\item{show_gene_name}{whether to attach readable gene names for each GO term, default FALSE.}
 }
 \value{
-a \code{data.frame} for GO exact enrichment result.
+a \code{list} of \code{data.frame} for GO exact enrichment result.
 }
 \details{
 \code{GOEA} conduct regular GOEA analysis with Fisher's exact test / permutation test.

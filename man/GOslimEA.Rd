@@ -5,7 +5,7 @@
 \title{Vectorized function to enrich GO slim terms with a list of gene sets against a common background.}
 \usage{
 GOslimEA(gene_set, back_ground, orgDb, category = "BP",
-  ID_type = "ENTREZID", min_bg_count = 1, max_bg_count = 1000,
+  gene_key = "ENTREZID", min_bg_count = 1, max_bg_count = 1000,
   exclude_root_slim = T, exclude_zero_slim = T, EASE_Score = F,
   interpret_term = F, show_gene_name = F, slim_collection = NULL)
 }
@@ -18,30 +18,30 @@ GOslimEA(gene_set, back_ground, orgDb, category = "BP",
 
 \item{category}{a character specifying the gene ontology category, can be one in "BP", "CC", and "MF", default "BP".}
 
-\item{ID_type}{a character specifying the type of the ID, the available types of the keys can be find using \code{keytypes(org.Hs.eg.db)}, default "ENTREZID".}
+\item{gene_key}{a character specifying the type of the gene ID, the available types of the keys can be find using \code{keytypes(org.Hs.eg.db)}, default "ENTREZID".}
 
-\item{min_bg_count}{term minimum number of count in background gene set; default 1.}
+\item{min_bg_count}{GO slim term minimum number of occurence in background gene set; default 1.}
 
-\item{max_bg_count}{term maximum number of count in background gene set; default 1000.}
+\item{max_bg_count}{GO slim term maximum number of occurence in background gene set; default 1000.}
 
-\item{exclude_root_slim}{whether to drop the GO slim terms that labeling "BP", "CC", or "MF" at the very first, default TRUE.}
+\item{exclude_root_slim}{whether to drop the GO slim terms that are roots of "BP", "CC", or "MF" at the very first, default TRUE.}
 
-\item{exclude_zero_slim}{whether to exclude the involvement of the genes that belong to no GO slim terms at all, default TRUE.}
+\item{exclude_zero_slim}{whether to exclude the involvement of the genes that belong to no GO slim terms at all, default TRUE (increase power).}
 
 \item{EASE_Score}{whether or not use EASE score method. (a more conservative hypergeomatric test calculation used in DAVID)
 for more details please refer to \url{https://david.ncifcrf.gov/helps/functional_annotation.html#fisher}, default FALSE.}
 
 \item{interpret_term}{whether to let the GO term readable, default FALSE.}
 
-\item{show_gene_name}{whether to let the gene name readable, default FALSE.}
+\item{show_gene_name}{whether to attach readable gene names for each GO term, default FALSE.}
 
 \item{slim_collection}{an \code{OBOCollection} object define the mapping between GO exact and GO slim, if not provided, it will use the generic collection.}
 
 \item{pvalue_correction}{method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".}
 }
 \value{
-a \code{data.frame} for GO slim enrichment result.
+a \code{list} of \code{data.frame} for GO slim enrichment result.
 }
 \details{
-\code{GOslimEA} conduct GOslimEA analysis using Fisher's exact test / permutation test on GO slim terms. GO slim terms refer to the reduced GO terms that are roots in GO hierachical structures.
+\code{GOslimEA} conduct GO slim EA analysis using Fisher's exact test / permutation test on GO slim terms. GO slim terms refer to the reduced GO terms that are roots in GO hierachical structures.
 }
