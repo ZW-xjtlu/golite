@@ -1,10 +1,10 @@
-Untitled
+golite
 ================
 
-How to use golite
------------------
+Installation
+------------
 
-install the package with:
+Install the package with:
 
 ``` r
 library(devtools)
@@ -22,22 +22,24 @@ library(magrittr)
 library(org.Hs.eg.db)
 ```
 
-Get example randomly sampled gene ids.
+Get example randomly sampled gene ids for background and gene set.
 
 ``` r
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 txdb = TxDb.Hsapiens.UCSC.hg19.knownGene
 all_eids_hg19 <- names(genes(txdb))
-```
 
-``` r
 set.seed(1)
 eids_bg <- sample(all_eids_hg19, 3500)
 eids_set <- sample(eids_bg,300)
+```
 
+Run GO enrichment analysis given gene set and background.
+
+``` r
 GOEA(gene_set = eids_set,
-     orgDb = org.Hs.eg.db,
      back_ground = eids_bg,
+     orgDb = org.Hs.eg.db,
      interpret_term = T) %>% head(.,10) %>% knitr::kable(.,"markdown")
 ```
 
@@ -150,8 +152,8 @@ The function can be vectorized, i.e. the input can be a `list` of multiple gene 
 eids_sets <- lapply(1:10,function(x) sample(eids_bg,300)) 
 
 GOEA(gene_set = eids_sets,
-     orgDb = org.Hs.eg.db,
-     back_ground = eids_bg) %>% summary
+     back_ground = eids_bg,
+     orgDb = org.Hs.eg.db) %>% summary
 ```
 
     ##       Length Class      Mode
@@ -173,8 +175,8 @@ GO slim is a subset of GO terms that can be defined at [here](http://geneontolog
 
 ``` r
 GOslimEA(gene_set = eids_set,
-     orgDb = org.Hs.eg.db,
      back_ground = eids_bg,
+       orgDb = org.Hs.eg.db,
      interpret_term = T)  %>% head(.,10) %>% knitr::kable(.,"markdown")
 ```
 
@@ -287,8 +289,8 @@ For more information of EASE, please see [here](https://david.ncifcrf.gov/helps/
 
 ``` r
 GOslimEA(gene_set = eids_sets,
+        back_ground = eids_bg, 
      orgDb = org.Hs.eg.db,
-     back_ground = eids_bg, 
      EASE_Score = F) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "normal hypergeometric")
 ```
 
@@ -296,8 +298,8 @@ GOslimEA(gene_set = eids_sets,
 
 ``` r
 GOslimEA(gene_set = eids_sets,
+         back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
-     back_ground = eids_bg,
      EASE_Score = T) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "EASE score")
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "golite"
 output: github_document
 ---
 
@@ -7,9 +7,9 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## How to use golite
+## Installation
 
-install the package with:
+Install the package with:
 
 ```{r,eval=FALSE}
 library(devtools)
@@ -18,7 +18,7 @@ install_github("ZhenWei10/golite")
 
 ## Run GO enrichment analysis
 
-The necessary input of GOEA should be the gene set gene ID, background gene ID, and an [orgDb object](http://www.bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html).
+The necessary input of GOEA should be the gene set gene ID, background gene ID, and the [orgDb object](http://www.bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html).
 
 ```{r,message=FALSE}
 library(golite)
