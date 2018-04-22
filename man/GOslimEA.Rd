@@ -5,9 +5,9 @@
 \title{Vectorized function to enrich GO slim terms with a list of gene sets against a common background.}
 \usage{
 GOslimEA(gene_set, back_ground, orgDb, category = "BP",
-  gene_key = "ENTREZID", min_bg_count = 1, max_bg_count = 1000,
+  gene_key = "ENTREZID", min_bg_count = 1, max_bg_count = 3000,
   exclude_root_slim = T, exclude_zero_slim = T, EASE_Score = F,
-  interpret_term = F, show_gene_name = F, slim_collection = NULL)
+  interpret_term = F, show_gene_name = F)
 }
 \arguments{
 \item{gene_set}{a list of character vectors contains gene IDs of the query gene sets.}
@@ -34,8 +34,6 @@ for more details please refer to \url{https://david.ncifcrf.gov/helps/functional
 \item{interpret_term}{whether to let the GO term readable, default FALSE.}
 
 \item{show_gene_name}{whether to attach readable gene names for each GO term, default FALSE.}
-
-\item{slim_collection}{an \code{OBOCollection} object define the mapping between GO exact and GO slim, if not provided, it will use the generic collection.}
 
 \item{pvalue_correction}{method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".}
 }

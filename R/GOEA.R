@@ -28,8 +28,22 @@ GOEA <- function(gene_set,
                        show_gene_name = F,
                        attach_slim = F,
                        exclude_root_slim = F
-                       )
-{
+                       ) {
+
+  if(any(duplicated(back_ground))) {
+    warning("back_ground gene IDs contain duplicated terms, the duplicates are removed",call. = TRUE)
+    back_ground = unique(back_ground)
+  }
+
+  if(class( gene_set ) == "character") { gene_set = list(gene_set) }
+
+  if(any(sapply(gene_set, function(x) any(duplicated(x)) ))) {
+    warning("gene set gene IDs contain duplicated terms, the duplicates are removed",call. = TRUE)
+    gene_set = lapply(gene_set, function(x) unique(x))
+  }
+
+  stopifnot(category %in% c("BP","CC","MF"))
+
   GO_indx <- gene2go(back_ground,gene_key,orgDb,category)
 
   GO_tb <- table(GO_indx$GO)
@@ -38,15 +52,16 @@ GOEA <- function(gene_set,
 
   GO_indx <- GO_indx[ GO_indx$GO %in% (names(GO_tb)[filter_go]), ]
 
-  Freq_bg <- table( GO_indx$GO )
-
- if(class( gene_set ) == "character") { gene_set = list(gene_set) }
+  Freq_bg <- table( as.character( GO_indx$GO ) )
 
   result_lst <- list()
 
   for(i in 1:length(gene_set) ) {
+
+    Freq_gs <- table( as.character( GO_indx$GO [ GO_indx[[gene_key]] %in% gene_set[[i]] ] ) )
+
     result_lst[[i]] <- gsea(
-      freq_gs = table( GO_indx$GO [ GO_indx[[gene_key]] %in% gene_set[[i]] ] ),
+      freq_gs = Freq_gs,
       freq_bg = Freq_bg,
       gs_total_gene = length(gene_set[[i]]),
       bg_total_gene = length(back_ground),

@@ -28,8 +28,20 @@ set.seed(1)
 eids_bg <- sample(all_eids_hg19,3500)
 eids_sets <- lapply(1:10,function(x)sample(eids_bg,300))
 
+gene_set = eids_sets
+back_ground = eids_bg
+
+Gene_ID = eids_bg
+
+Gene_symbol = AnnotationDbi::select(OrgDB, keys = as.character(Gene_ID), columns = "SYMBOL", keytype = "ENTREZID")
+
+Gene_ID = Gene_symbol$SYMBOL
+
+gene2goslim(Gene_ID,"SYMBOL",OrgDB)
+
 library(org.Hs.eg.db)
 orgDb = org.Hs.eg.db
+OrgDB = org.Hs.eg.db
 
 min_bg_count = 1
 max_bg_count = 1000
@@ -68,6 +80,26 @@ saveRDS(GOslim_gene_lst,"GOslim_gene_lst_BP.rds")
 #nohup Rscript goslim_CC.R > goslim_CC.out &
 #nohup Rscript goslim_MF.R > goslim_MF.out &
 
-map_index_cc <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "CC")
-map_index_mf <- gene2go( eids_bg ,OrgDB = org.Hs.eg.db, Category = "MF")
+#scp zhen@10.7.6.53:/home/zhen/golite_data/All_GOslim.tar.gz /Users/zhenwei/Documents/GitHub
 
+GOslim_gene_lst_BP <- readRDS("GOslim_gene_lst_BP.rds")
+GOslim_gene_lst_CC <- readRDS("GOslim_gene_lst_CC.rds")
+GOslim_gene_lst_MF <- readRDS("GOslim_gene_lst_MF.rds")
+
+Trans_df <- function(x){
+data.frame(
+  ENTREZID = rep(names(x),elementNROWS(x)),
+  GO_slim = unlist(x)
+           )
+}
+
+GOslim_gene_lst_BP <- Trans_df(GOslim_gene_lst_BP)
+GOslim_gene_lst_CC <- Trans_df(GOslim_gene_lst_CC)
+GOslim_gene_lst_MF <- Trans_df(GOslim_gene_lst_MF)
+
+devtools::use_data(GOslim_gene_lst_BP, internal = TRUE, overwrite = TRUE)
+devtools::use_data(GOslim_gene_lst_CC, internal = TRUE, overwrite = TRUE)
+devtools::use_data(GOslim_gene_lst_MF, internal = TRUE, overwrite = TRUE)
+
+
+mean(sapply(GOslim_gene_lst_BP,anyNA)) #27% genes are NAs.

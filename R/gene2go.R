@@ -13,6 +13,8 @@ gene2go <- function(Gene_ID,
                    Category = "BP",
                    Drop_zero_match = F) {
 
+  stopifnot(Category %in% c("BP","CC","MF"))
+
   Map_result <- suppressMessages( select(OrgDB, keys = as.character(Gene_ID), columns = "GO", keytype = Gene_key_type) )
 
   Map_result <- na.omit(Map_result) #The Genes that map to no GO ids are dropped

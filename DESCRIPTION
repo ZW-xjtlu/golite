@@ -8,5 +8,5 @@ Maintainer: Zhen Wei <Zhen.Wei@xjtlu.edu.cn>
 Description: This package provides fast and classical GO enrichment analysis over GO exact or GO slim terms.
 License: What license is it under?
 LazyData: true
-Imports: GSEABase,AnnotationDbi
+Imports: GSEABase,AnnotationDbi,dplyr
 RoxygenNote: 6.0.1
