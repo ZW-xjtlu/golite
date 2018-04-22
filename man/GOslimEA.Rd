@@ -7,7 +7,7 @@
 GOslimEA(gene_set, back_ground, orgDb, category = "BP",
   gene_key = "ENTREZID", min_bg_count = 1, max_bg_count = 3000,
   exclude_root_slim = T, exclude_zero_slim = T, EASE_Score = F,
-  interpret_term = F, show_gene_name = F)
+  pvalue_correction = "BH", interpret_term = F, show_gene_name = F)
 }
 \arguments{
 \item{gene_set}{a list of character vectors contains gene IDs of the query gene sets.}
@@ -31,11 +31,11 @@ GOslimEA(gene_set, back_ground, orgDb, category = "BP",
 \item{EASE_Score}{whether or not use EASE score method. (a more conservative hypergeomatric test calculation used in DAVID)
 for more details please refer to \url{https://david.ncifcrf.gov/helps/functional_annotation.html#fisher}, default FALSE.}
 
+\item{pvalue_correction}{method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".}
+
 \item{interpret_term}{whether to let the GO term readable, default FALSE.}
 
 \item{show_gene_name}{whether to attach readable gene names for each GO term, default FALSE.}
-
-\item{pvalue_correction}{method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".}
 }
 \value{
 a \code{list} of \code{data.frame} for GO slim enrichment result.

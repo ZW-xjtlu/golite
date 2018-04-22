@@ -88,7 +88,10 @@ GOEA <- function(gene_set,
     })
   }
 
+  if(length(result_lst) == 1){
+  return(result_lst[[1]])
+  } else {
   names(result_lst) = names(gene_set)
-
   return( result_lst )
+  }
 }

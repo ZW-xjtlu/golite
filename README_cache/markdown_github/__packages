@@ -1,0 +1,13 @@
+base
+golite
+magrittr
+BiocGenerics
+Biobase
+S4Vectors
+IRanges
+AnnotationDbi
+org.Hs.eg.db
+GenomeInfoDb
+GenomicRanges
+GenomicFeatures
+TxDb.Hsapiens.UCSC.hg19.knownGene

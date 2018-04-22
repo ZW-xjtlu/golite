@@ -29,6 +29,7 @@ GOslimEA <- function(gene_set,
                        exclude_root_slim = T,
                        exclude_zero_slim = T,
                        EASE_Score= F,
+                       pvalue_correction = "BH",
                        interpret_term = F,
                        show_gene_name = F
                       ) {
@@ -98,8 +99,11 @@ GOslimEA <- function(gene_set,
     })
   }
 
-  names(result_lst) = names(gene_set)
 
-  return( result_lst )
-
+  if(length(result_lst) == 1){
+    return(result_lst[[1]])
+  } else {
+    names(result_lst) = names(gene_set)
+    return( result_lst )
+  }
 }
