@@ -68,94 +68,94 @@ GOEA(gene_set = eids_set,
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="GO:0006672" class="uri">GO:0006672</a></td>
-<td align="left">bubble DNA binding</td>
-<td align="right">3</td>
-<td align="right">4</td>
-<td align="right">0.0026516</td>
-<td align="right">0.7022065</td>
-<td align="right">8.40</td>
-</tr>
-<tr class="even">
 <td align="left"><a href="GO:0009967" class="uri">GO:0009967</a></td>
 <td align="left">RNA polymerase III type 3 promoter transcriptional preinitiation complex assembly</td>
 <td align="right">29</td>
 <td align="right">191</td>
-<td align="right">0.0033730</td>
-<td align="right">0.7022065</td>
-<td align="right">1.70</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:2001235" class="uri">GO:2001235</a></td>
-<td align="left">chorismate mutase activity</td>
-<td align="right">7</td>
-<td align="right">24</td>
-<td align="right">0.0039779</td>
-<td align="right">0.7022065</td>
-<td align="right">3.27</td>
+<td align="right">0.0012078</td>
+<td align="right">0.5996853</td>
+<td align="right">1.77</td>
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0010647" class="uri">GO:0010647</a></td>
 <td align="left">transcription factor activity, RNA polymerase II core promoter proximal region sequence-specific binding involved in preinitiation complex assembly</td>
 <td align="right">32</td>
 <td align="right">225</td>
-<td align="right">0.0059308</td>
-<td align="right">0.7022065</td>
-<td align="right">1.59</td>
+<td align="right">0.0020695</td>
+<td align="right">0.5996853</td>
+<td align="right">1.66</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="GO:0023056" class="uri">GO:0023056</a></td>
 <td align="left">dopamine neurotransmitter receptor activity, coupled via Gi/Go</td>
 <td align="right">32</td>
 <td align="right">225</td>
-<td align="right">0.0059308</td>
-<td align="right">0.7022065</td>
-<td align="right">1.59</td>
+<td align="right">0.0020695</td>
+<td align="right">0.5996853</td>
+<td align="right">1.66</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="GO:2001238" class="uri">GO:2001238</a></td>
-<td align="left">citrate (Si)-synthase activity</td>
+<td align="left"><a href="GO:0006672" class="uri">GO:0006672</a></td>
+<td align="left">bubble DNA binding</td>
 <td align="right">3</td>
-<td align="right">5</td>
-<td align="right">0.0061875</td>
-<td align="right">0.7022065</td>
-<td align="right">6.72</td>
+<td align="right">4</td>
+<td align="right">0.0023288</td>
+<td align="right">0.5996853</td>
+<td align="right">8.75</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="GO:0060538" class="uri">GO:0060538</a></td>
-<td align="left">positive regulation of humoral immune response</td>
-<td align="right">6</td>
-<td align="right">20</td>
-<td align="right">0.0065098</td>
-<td align="right">0.7022065</td>
-<td align="right">3.36</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0071900" class="uri">GO:0071900</a></td>
-<td align="left">bundle of His development</td>
-<td align="right">12</td>
-<td align="right">61</td>
-<td align="right">0.0070302</td>
-<td align="right">0.7022065</td>
-<td align="right">2.20</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0043408" class="uri">GO:0043408</a></td>
-<td align="left">gene conversion of immunoglobulin genes</td>
-<td align="right">15</td>
-<td align="right">85</td>
-<td align="right">0.0079348</td>
-<td align="right">0.7022065</td>
-<td align="right">1.98</td>
+<td align="left"><a href="GO:2001235" class="uri">GO:2001235</a></td>
+<td align="left">chorismate mutase activity</td>
+<td align="right">7</td>
+<td align="right">24</td>
+<td align="right">0.0030061</td>
+<td align="right">0.5996853</td>
+<td align="right">3.40</td>
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0045859" class="uri">GO:0045859</a></td>
 <td align="left">mucosal immune response</td>
 <td align="right">17</td>
 <td align="right">101</td>
-<td align="right">0.0079599</td>
-<td align="right">0.7022065</td>
-<td align="right">1.89</td>
+<td align="right">0.0045006</td>
+<td align="right">0.5996853</td>
+<td align="right">1.96</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="GO:0071900" class="uri">GO:0071900</a></td>
+<td align="left">bundle of His development</td>
+<td align="right">12</td>
+<td align="right">61</td>
+<td align="right">0.0045852</td>
+<td align="right">0.5996853</td>
+<td align="right">2.30</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0043408" class="uri">GO:0043408</a></td>
+<td align="left">gene conversion of immunoglobulin genes</td>
+<td align="right">15</td>
+<td align="right">85</td>
+<td align="right">0.0047575</td>
+<td align="right">0.5996853</td>
+<td align="right">2.06</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="GO:1902531" class="uri">GO:1902531</a></td>
+<td align="left">11-beta-hydroxysteroid dehydrogenase [NAD(P)] activity</td>
+<td align="right">34</td>
+<td align="right">256</td>
+<td align="right">0.0047870</td>
+<td align="right">0.5996853</td>
+<td align="right">1.55</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0060538" class="uri">GO:0060538</a></td>
+<td align="left">positive regulation of humoral immune response</td>
+<td align="right">6</td>
+<td align="right">20</td>
+<td align="right">0.0051416</td>
+<td align="right">0.5996853</td>
+<td align="right">3.50</td>
 </tr>
 </tbody>
 </table>
@@ -222,90 +222,90 @@ GOEA(gene_set = eids_set,
 <td align="left">regulation of mitotic recombination</td>
 <td align="right">25</td>
 <td align="right">187</td>
-<td align="right">0.0242545</td>
-<td align="right">0.9744861</td>
-<td align="right">1.51</td>
+<td align="right">0.0141012</td>
+<td align="right">0.5162342</td>
+<td align="right">1.56</td>
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0008219" class="uri">GO:0008219</a></td>
 <td align="left">transition metal ion transport</td>
 <td align="right">39</td>
 <td align="right">327</td>
-<td align="right">0.0335098</td>
-<td align="right">0.9744861</td>
-<td align="right">1.35</td>
+<td align="right">0.0156435</td>
+<td align="right">0.5162342</td>
+<td align="right">1.39</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="GO:0040007" class="uri">GO:0040007</a></td>
-<td align="left">mitotic sister chromatid segregation</td>
-<td align="right">17</td>
-<td align="right">140</td>
-<td align="right">0.1119732</td>
-<td align="right">0.9744861</td>
-<td align="right">1.37</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0021700" class="uri">GO:0021700</a></td>
-<td align="left">citrulline metabolic process</td>
-<td align="right">6</td>
-<td align="right">40</td>
-<td align="right">0.1378236</td>
-<td align="right">0.9744861</td>
-<td align="right">1.70</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0043473" class="uri">GO:0043473</a></td>
-<td align="left">DNA damage checkpoint</td>
-<td align="right">2</td>
-<td align="right">8</td>
-<td align="right">0.1532290</td>
-<td align="right">0.9744861</td>
-<td align="right">2.83</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0006790" class="uri">GO:0006790</a></td>
-<td align="left">mitotic spindle elongation</td>
-<td align="right">7</td>
-<td align="right">51</td>
-<td align="right">0.1608780</td>
-<td align="right">0.9744861</td>
-<td align="right">1.55</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0071554" class="uri">GO:0071554</a></td>
-<td align="left">mitotic telophase</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">0.1690890</td>
-<td align="right">0.9744861</td>
-<td align="right">5.65</td>
-</tr>
-<tr class="even">
 <td align="left"><a href="GO:0048856" class="uri">GO:0048856</a></td>
 <td align="left">regulation of transcription involved in G1/S transition of mitotic cell cycle</td>
 <td align="right">83</td>
 <td align="right">848</td>
-<td align="right">0.1741215</td>
-<td align="right">0.9744861</td>
-<td align="right">1.11</td>
+<td align="right">0.0683518</td>
+<td align="right">0.9268498</td>
+<td align="right">1.14</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0040007" class="uri">GO:0040007</a></td>
+<td align="left">mitotic sister chromatid segregation</td>
+<td align="right">17</td>
+<td align="right">140</td>
+<td align="right">0.0852517</td>
+<td align="right">0.9268498</td>
+<td align="right">1.42</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="GO:0007165" class="uri">GO:0007165</a></td>
 <td align="left">acyl binding</td>
 <td align="right">77</td>
 <td align="right">795</td>
-<td align="right">0.2114339</td>
-<td align="right">0.9744861</td>
-<td align="right">1.09</td>
+<td align="right">0.0988005</td>
+<td align="right">0.9268498</td>
+<td align="right">1.13</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="GO:0048646" class="uri">GO:0048646</a></td>
-<td align="left">G1/S transition of mitotic cell cycle</td>
-<td align="right">17</td>
-<td align="right">156</td>
-<td align="right">0.2170074</td>
-<td align="right">0.9744861</td>
-<td align="right">1.23</td>
+<td align="left"><a href="GO:0021700" class="uri">GO:0021700</a></td>
+<td align="left">citrulline metabolic process</td>
+<td align="right">6</td>
+<td align="right">40</td>
+<td align="right">0.1221631</td>
+<td align="right">0.9268498</td>
+<td align="right">1.75</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="GO:0006790" class="uri">GO:0006790</a></td>
+<td align="left">mitotic spindle elongation</td>
+<td align="right">7</td>
+<td align="right">51</td>
+<td align="right">0.1415087</td>
+<td align="right">0.9268498</td>
+<td align="right">1.60</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0043473" class="uri">GO:0043473</a></td>
+<td align="left">DNA damage checkpoint</td>
+<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">0.1453356</td>
+<td align="right">0.9268498</td>
+<td align="right">2.92</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="GO:0071554" class="uri">GO:0071554</a></td>
+<td align="left">mitotic telophase</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0.1641360</td>
+<td align="right">0.9268498</td>
+<td align="right">5.83</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0007049" class="uri">GO:0007049</a></td>
+<td align="left">cell wall mannoprotein biosynthetic process</td>
+<td align="right">26</td>
+<td align="right">250</td>
+<td align="right">0.1651823</td>
+<td align="right">0.9268498</td>
+<td align="right">1.21</td>
 </tr>
 </tbody>
 </table>
