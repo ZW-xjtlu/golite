@@ -1,0 +1,109 @@
+---
+title: "Compare clusterProfiler"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Compare golite with clusterProfiler
+```{r}
+library(golite)
+library(magrittr)
+library(org.Hs.eg.db)
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+txdb = TxDb.Hsapiens.UCSC.hg19.knownGene
+all_eids_hg19 <- names(genes(txdb))
+
+set.seed(1)
+eids_bg <- sample(all_eids_hg19, 3500)
+eids_set <- sample(eids_bg,300)
+
+gose_result1 <- GOEA(gene_set = eids_set,
+     back_ground = eids_bg,
+     orgDb = org.Hs.eg.db,
+     interpret_term = T,
+     min_gs_count = 10,
+     max_gs_count = 1000,
+     GO_Slim = F)
+
+
+length(readable$ID)
+length(gose_result1$term)
+
+cor.test( gose_result1$p,readable$pvalue[match(gose_result1$term, readable$ID)] )
+
+
+head(gose_result1)
+
+library(clusterProfiler)
+set.seed = 1
+ego <- enrichGO(gene          = eids_set,
+                universe      = eids_bg,
+                OrgDb         = org.Hs.eg.db,
+                ont           = "BP",
+                pAdjustMethod = "BH",
+                pvalueCutoff  = 1,
+                qvalueCutoff  = 1,
+                readable      = TRUE)
+
+readable <- as.data.frame(ego)[,c("ID","Description","pvalue")]
+
+head(readable)
+
+matched <- gene2go(eids_bg,OrgDB = org.Hs.eg.db)
+matched$ENTREZID[which(matched$GO == "GO:0009967")] %in% eids_set
+
+
+
+library(GO.db)
+AnnotationDbi::select(GO.db, 'GO:0016310', columns = c('TERM','ONTOLOGY'), keytype='GOID')
+x<-as.list(GOMFPARENTS)
+x<-as.list(GO.db::GOMFANCESTOR)
+```
+
+
+#GO ancestor = GO slim?
+- not really sure.
+
+```{r}
+BP_ances_lst <- as.list( GO.db::GOBPANCESTOR )
+
+GOslim_gene_lst_BP <- readRDS("GOslim_gene_lst_BP.rds")
+
+examples <- gene2go(c("100125288","100126296"),OrgDB = org.Hs.eg.db)
+
+GOslim_gene_lst_BP[["10036"]]
+
+GOslim_gene_lst_BP[["100125288"]] %in% unlist(BP_ances_lst[examples$GO[examples$ENTREZID == "100125288"]])
+GOslim_gene_lst_BP[["100126296"]] %in% unlist(BP_ances_lst[examples$GO[examples$ENTREZID == "100126296"]])
+
+
+fl <- "http://geneontology.org/ontology/subsets/goslim_generic.obo"
+
+library(GSEABase)
+
+slim_generic <- getOBOCollection(fl)
+ 
+all_ancestors <-  unique( unlist(BP_ances_lst[examples$GO[examples$ENTREZID == "100125288"]]) )
+  
+all_ancestors[all_ancestors %in% slim_generic@ids]
+
+GOslim_gene_lst_BP[["100125288"]]
+
+GOslim_gene_lst_BP <- readRDS("GOslim_gene_lst_BP.rds")
+
+Gene_ID = eids_bg
+
+GO_all <- gene2go(eids_bg,OrgDB = org.Hs.eg.db)
+
+
+GO_all <- gene2go(eids_bg,OrgDB = org.Hs.eg.db,Slim = T)
+
+GOslim_gene_lst_BP[["10013"]] %in% GO_all_lst[["10013"]]
+GO_all_lst[["10013"]] %in% GOslim_gene_lst_BP[["10013"]]
+
+GO_all_lst <- split(GO_all$GO,GO_all$ENTREZID)
+```
+

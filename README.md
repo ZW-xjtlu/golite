@@ -14,7 +14,7 @@ install_github("ZhenWei10/golite")
 Run GO enrichment analysis
 --------------------------
 
-The necessary input of GOEA should be the gene set gene ID, background gene ID, and an [orgDb object](http://www.bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html).
+The necessary input of GOEA should be the gene set gene ID, background gene ID, and the [orgDb object](http://www.bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html).
 
 ``` r
 library(golite)
@@ -43,18 +43,22 @@ GOEA(gene_set = eids_set,
      interpret_term = T) %>% head(.,10) %>% knitr::kable(.,"markdown")
 ```
 
+    ## Loading required package: GO.db
+
 <table>
 <colgroup>
-<col width="65%" />
-<col width="6%" />
-<col width="6%" />
-<col width="8%" />
-<col width="7%" />
 <col width="5%" />
+<col width="71%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="2%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left">term</th>
+<th align="left">definition</th>
 <th align="right">freq_gs</th>
 <th align="right">freq_bg</th>
 <th align="right">p</th>
@@ -64,84 +68,94 @@ GOEA(gene_set = eids_set,
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">telomere cap complex</td>
-<td align="right">6</td>
-<td align="right">17</td>
-<td align="right">0.0020701</td>
-<td align="right">0.313615</td>
-<td align="right">4.12</td>
-</tr>
-<tr class="even">
-<td align="left">nuclear condensin complex</td>
+<td align="left"><a href="GO:0006672" class="uri">GO:0006672</a></td>
+<td align="left">bubble DNA binding</td>
 <td align="right">3</td>
 <td align="right">4</td>
-<td align="right">0.0023370</td>
-<td align="right">0.313615</td>
-<td align="right">8.75</td>
+<td align="right">0.0026516</td>
+<td align="right">0.7022065</td>
+<td align="right">8.40</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0009967" class="uri">GO:0009967</a></td>
+<td align="left">RNA polymerase III type 3 promoter transcriptional preinitiation complex assembly</td>
+<td align="right">29</td>
+<td align="right">191</td>
+<td align="right">0.0033730</td>
+<td align="right">0.7022065</td>
+<td align="right">1.70</td>
 </tr>
 <tr class="odd">
-<td align="left">nucleotide-excision repair, DNA damage removal</td>
+<td align="left"><a href="GO:2001235" class="uri">GO:2001235</a></td>
+<td align="left">chorismate mutase activity</td>
 <td align="right">7</td>
-<td align="right">25</td>
-<td align="right">0.0039369</td>
-<td align="right">0.313615</td>
+<td align="right">24</td>
+<td align="right">0.0039779</td>
+<td align="right">0.7022065</td>
 <td align="right">3.27</td>
 </tr>
 <tr class="even">
-<td align="left">Hrd1p ubiquitin ligase ERAD-M complex</td>
-<td align="right">5</td>
-<td align="right">14</td>
-<td align="right">0.0046850</td>
-<td align="right">0.313615</td>
-<td align="right">4.17</td>
+<td align="left"><a href="GO:0010647" class="uri">GO:0010647</a></td>
+<td align="left">transcription factor activity, RNA polymerase II core promoter proximal region sequence-specific binding involved in preinitiation complex assembly</td>
+<td align="right">32</td>
+<td align="right">225</td>
+<td align="right">0.0059308</td>
+<td align="right">0.7022065</td>
+<td align="right">1.59</td>
 </tr>
 <tr class="odd">
-<td align="left">mitotic cytokinesis</td>
-<td align="right">6</td>
-<td align="right">20</td>
-<td align="right">0.0052013</td>
-<td align="right">0.313615</td>
-<td align="right">3.50</td>
+<td align="left"><a href="GO:0023056" class="uri">GO:0023056</a></td>
+<td align="left">dopamine neurotransmitter receptor activity, coupled via Gi/Go</td>
+<td align="right">32</td>
+<td align="right">225</td>
+<td align="right">0.0059308</td>
+<td align="right">0.7022065</td>
+<td align="right">1.59</td>
 </tr>
 <tr class="even">
-<td align="left">transcriptional activator activity, metal ion regulated sequence-specific DNA binding</td>
+<td align="left"><a href="GO:2001238" class="uri">GO:2001238</a></td>
+<td align="left">citrate (Si)-synthase activity</td>
 <td align="right">3</td>
 <td align="right">5</td>
-<td align="right">0.0054719</td>
-<td align="right">0.313615</td>
-<td align="right">7.00</td>
+<td align="right">0.0061875</td>
+<td align="right">0.7022065</td>
+<td align="right">6.72</td>
 </tr>
 <tr class="odd">
-<td align="left">alpha-1,6-mannosyltransferase activity</td>
+<td align="left"><a href="GO:0060538" class="uri">GO:0060538</a></td>
+<td align="left">positive regulation of humoral immune response</td>
 <td align="right">6</td>
-<td align="right">21</td>
-<td align="right">0.0067680</td>
-<td align="right">0.313615</td>
-<td align="right">3.33</td>
+<td align="right">20</td>
+<td align="right">0.0065098</td>
+<td align="right">0.7022065</td>
+<td align="right">3.36</td>
 </tr>
 <tr class="even">
-<td align="left">response to superoxide</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">0.0073245</td>
-<td align="right">0.313615</td>
-<td align="right">11.67</td>
+<td align="left"><a href="GO:0071900" class="uri">GO:0071900</a></td>
+<td align="left">bundle of His development</td>
+<td align="right">12</td>
+<td align="right">61</td>
+<td align="right">0.0070302</td>
+<td align="right">0.7022065</td>
+<td align="right">2.20</td>
 </tr>
 <tr class="odd">
-<td align="left">RNA polymerase II transcription corepressor activity</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">0.0073245</td>
-<td align="right">0.313615</td>
-<td align="right">11.67</td>
+<td align="left"><a href="GO:0043408" class="uri">GO:0043408</a></td>
+<td align="left">gene conversion of immunoglobulin genes</td>
+<td align="right">15</td>
+<td align="right">85</td>
+<td align="right">0.0079348</td>
+<td align="right">0.7022065</td>
+<td align="right">1.98</td>
 </tr>
 <tr class="even">
-<td align="left">TFIIIC-class transcription factor binding</td>
-<td align="right">2</td>
-<td align="right">2</td>
-<td align="right">0.0073245</td>
-<td align="right">0.313615</td>
-<td align="right">11.67</td>
+<td align="left"><a href="GO:0045859" class="uri">GO:0045859</a></td>
+<td align="left">mucosal immune response</td>
+<td align="right">17</td>
+<td align="right">101</td>
+<td align="right">0.0079599</td>
+<td align="right">0.7022065</td>
+<td align="right">1.89</td>
 </tr>
 </tbody>
 </table>
@@ -174,24 +188,27 @@ Run GO slim enrichment analysis
 GO slim is a subset of GO terms that can be defined at [here](http://geneontology.org/ontology/subsets/).
 
 ``` r
-GOslimEA(gene_set = eids_set,
+GOEA(gene_set = eids_set,
      back_ground = eids_bg,
-       orgDb = org.Hs.eg.db,
-     interpret_term = T)  %>% head(.,10) %>% knitr::kable(.,"markdown")
+     orgDb = org.Hs.eg.db,
+     interpret_term = T,
+     GO_Slim = T)  %>% head(.,10) %>% knitr::kable(.,"markdown")
 ```
 
 <table>
 <colgroup>
-<col width="61%" />
-<col width="7%" />
-<col width="7%" />
-<col width="9%" />
-<col width="9%" />
-<col width="5%" />
+<col width="8%" />
+<col width="57%" />
+<col width="6%" />
+<col width="6%" />
+<col width="8%" />
+<col width="8%" />
+<col width="4%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="left">term</th>
+<th align="left">definition</th>
 <th align="right">freq_gs</th>
 <th align="right">freq_bg</th>
 <th align="right">p</th>
@@ -201,84 +218,94 @@ GOslimEA(gene_set = eids_set,
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">mitotic spindle elongation</td>
-<td align="right">26</td>
-<td align="right">196</td>
-<td align="right">0.0134822</td>
-<td align="right">0.5973330</td>
-<td align="right">1.55</td>
+<td align="left"><a href="GO:0006629" class="uri">GO:0006629</a></td>
+<td align="left">regulation of mitotic recombination</td>
+<td align="right">25</td>
+<td align="right">187</td>
+<td align="right">0.0242545</td>
+<td align="right">0.9744861</td>
+<td align="right">1.51</td>
 </tr>
 <tr class="even">
-<td align="left">protein targeting to Golgi</td>
+<td align="left"><a href="GO:0008219" class="uri">GO:0008219</a></td>
+<td align="left">transition metal ion transport</td>
 <td align="right">39</td>
-<td align="right">330</td>
-<td align="right">0.0178308</td>
-<td align="right">0.5973330</td>
-<td align="right">1.38</td>
+<td align="right">327</td>
+<td align="right">0.0335098</td>
+<td align="right">0.9744861</td>
+<td align="right">1.35</td>
 </tr>
 <tr class="odd">
-<td align="left">regulation of cyclin-dependent protein serine/threonine kinase activity</td>
-<td align="right">3</td>
-<td align="right">11</td>
-<td align="right">0.0610555</td>
-<td align="right">0.7512072</td>
-<td align="right">3.18</td>
+<td align="left"><a href="GO:0040007" class="uri">GO:0040007</a></td>
+<td align="left">mitotic sister chromatid segregation</td>
+<td align="right">17</td>
+<td align="right">140</td>
+<td align="right">0.1119732</td>
+<td align="right">0.9744861</td>
+<td align="right">1.37</td>
 </tr>
 <tr class="even">
-<td align="left">spindle pole body separation</td>
-<td align="right">18</td>
-<td align="right">144</td>
-<td align="right">0.0615801</td>
-<td align="right">0.7512072</td>
-<td align="right">1.46</td>
-</tr>
-<tr class="odd">
-<td align="left">alpha-1,3-mannosyltransferase activity</td>
-<td align="right">31</td>
-<td align="right">278</td>
-<td align="right">0.0671522</td>
-<td align="right">0.7512072</td>
-<td align="right">1.30</td>
-</tr>
-<tr class="even">
-<td align="left">mitotic S phase</td>
-<td align="right">83</td>
-<td align="right">848</td>
-<td align="right">0.0672723</td>
-<td align="right">0.7512072</td>
-<td align="right">1.14</td>
-</tr>
-<tr class="odd">
-<td align="left">mannosylphosphate transferase activity</td>
-<td align="right">21</td>
-<td align="right">185</td>
-<td align="right">0.1042908</td>
-<td align="right">0.9441091</td>
-<td align="right">1.33</td>
-</tr>
-<tr class="even">
-<td align="left">argininosuccinate metabolic process</td>
+<td align="left"><a href="GO:0021700" class="uri">GO:0021700</a></td>
+<td align="left">citrulline metabolic process</td>
 <td align="right">6</td>
 <td align="right">40</td>
-<td align="right">0.1217052</td>
-<td align="right">0.9441091</td>
-<td align="right">1.75</td>
+<td align="right">0.1378236</td>
+<td align="right">0.9744861</td>
+<td align="right">1.70</td>
 </tr>
 <tr class="odd">
-<td align="left">maltose metabolic process</td>
-<td align="right">7</td>
-<td align="right">51</td>
-<td align="right">0.1409450</td>
-<td align="right">0.9441091</td>
-<td align="right">1.60</td>
+<td align="left"><a href="GO:0043473" class="uri">GO:0043473</a></td>
+<td align="left">DNA damage checkpoint</td>
+<td align="right">2</td>
+<td align="right">8</td>
+<td align="right">0.1532290</td>
+<td align="right">0.9744861</td>
+<td align="right">2.83</td>
 </tr>
 <tr class="even">
-<td align="left">acyl carrier activity</td>
-<td align="right">79</td>
-<td align="right">841</td>
-<td align="right">0.1614878</td>
-<td align="right">0.9441091</td>
-<td align="right">1.10</td>
+<td align="left"><a href="GO:0006790" class="uri">GO:0006790</a></td>
+<td align="left">mitotic spindle elongation</td>
+<td align="right">7</td>
+<td align="right">51</td>
+<td align="right">0.1608780</td>
+<td align="right">0.9744861</td>
+<td align="right">1.55</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="GO:0071554" class="uri">GO:0071554</a></td>
+<td align="left">mitotic telophase</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0.1690890</td>
+<td align="right">0.9744861</td>
+<td align="right">5.65</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0048856" class="uri">GO:0048856</a></td>
+<td align="left">regulation of transcription involved in G1/S transition of mitotic cell cycle</td>
+<td align="right">83</td>
+<td align="right">848</td>
+<td align="right">0.1741215</td>
+<td align="right">0.9744861</td>
+<td align="right">1.11</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="GO:0007165" class="uri">GO:0007165</a></td>
+<td align="left">acyl binding</td>
+<td align="right">77</td>
+<td align="right">795</td>
+<td align="right">0.2114339</td>
+<td align="right">0.9744861</td>
+<td align="right">1.09</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="GO:0048646" class="uri">GO:0048646</a></td>
+<td align="left">G1/S transition of mitotic cell cycle</td>
+<td align="right">17</td>
+<td align="right">156</td>
+<td align="right">0.2170074</td>
+<td align="right">0.9744861</td>
+<td align="right">1.23</td>
 </tr>
 </tbody>
 </table>
@@ -288,18 +315,20 @@ you could set `EASE_score = TRUE` to get a more conservative p value.
 For more information of EASE, please see [here](https://david.ncifcrf.gov/helps/functional_annotation.html#fisher).
 
 ``` r
-GOslimEA(gene_set = eids_sets,
-        back_ground = eids_bg, 
+GOEA(gene_set = eids_sets,
+     back_ground = eids_bg, 
      orgDb = org.Hs.eg.db,
+     GO_Slim = T,
      EASE_Score = F) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "normal hypergeometric")
 ```
 
 ![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 ``` r
-GOslimEA(gene_set = eids_sets,
+GOEA(gene_set = eids_sets,
          back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
+     GO_Slim = T,
      EASE_Score = T) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "EASE score")
 ```
 
@@ -327,45 +356,41 @@ sessionInfo()
     ## [8] methods   base     
     ## 
     ## other attached packages:
-    ##  [1] TxDb.Hsapiens.UCSC.hg19.knownGene_3.2.2
-    ##  [2] GenomicFeatures_1.30.3                 
-    ##  [3] GenomicRanges_1.30.3                   
-    ##  [4] GenomeInfoDb_1.14.0                    
-    ##  [5] org.Hs.eg.db_3.5.0                     
-    ##  [6] AnnotationDbi_1.40.0                   
-    ##  [7] IRanges_2.12.0                         
-    ##  [8] S4Vectors_0.16.0                       
-    ##  [9] Biobase_2.38.0                         
-    ## [10] BiocGenerics_0.24.0                    
-    ## [11] magrittr_1.5                           
-    ## [12] golite_1.0                             
+    ##  [1] GO.db_3.5.0                            
+    ##  [2] TxDb.Hsapiens.UCSC.hg19.knownGene_3.2.2
+    ##  [3] GenomicFeatures_1.30.3                 
+    ##  [4] GenomicRanges_1.30.3                   
+    ##  [5] GenomeInfoDb_1.14.0                    
+    ##  [6] org.Hs.eg.db_3.5.0                     
+    ##  [7] AnnotationDbi_1.40.0                   
+    ##  [8] IRanges_2.12.0                         
+    ##  [9] S4Vectors_0.16.0                       
+    ## [10] Biobase_2.38.0                         
+    ## [11] BiocGenerics_0.24.0                    
+    ## [12] magrittr_1.5                           
+    ## [13] golite_1.0                             
     ## 
     ## loaded via a namespace (and not attached):
-    ##  [1] SummarizedExperiment_1.8.1 progress_1.1.2            
-    ##  [3] lattice_0.20-35            htmltools_0.3.6           
-    ##  [5] rtracklayer_1.38.3         yaml_2.1.18               
-    ##  [7] blob_1.1.1                 XML_3.98-1.10             
-    ##  [9] rlang_0.2.0                pillar_1.2.1              
-    ## [11] glue_1.2.0                 DBI_0.8                   
-    ## [13] BiocParallel_1.12.0        bit64_0.9-7               
-    ## [15] bindrcpp_0.2               matrixStats_0.53.1        
-    ## [17] GenomeInfoDbData_1.0.0     bindr_0.1.1               
-    ## [19] stringr_1.3.0              zlibbioc_1.24.0           
-    ## [21] Biostrings_2.46.0          memoise_1.1.0             
-    ## [23] evaluate_0.10.1            knitr_1.20                
-    ## [25] biomaRt_2.34.2             highr_0.6                 
-    ## [27] GSEABase_1.40.1            Rcpp_0.12.16              
-    ## [29] xtable_1.8-2               backports_1.1.2           
-    ## [31] DelayedArray_0.4.1         graph_1.56.0              
-    ## [33] annotate_1.56.2            XVector_0.18.0            
-    ## [35] bit_1.1-12                 Rsamtools_1.30.0          
-    ## [37] RMySQL_0.10.14             digest_0.6.15             
-    ## [39] stringi_1.1.7              dplyr_0.7.4               
-    ## [41] grid_3.4.2                 rprojroot_1.3-2           
-    ## [43] tools_3.4.2                bitops_1.0-6              
-    ## [45] RCurl_1.95-4.10            tibble_1.4.2              
-    ## [47] RSQLite_2.0                pkgconfig_2.0.1           
-    ## [49] Matrix_1.2-12              prettyunits_1.0.2         
-    ## [51] assertthat_0.2.0           rmarkdown_1.9             
-    ## [53] httr_1.3.1                 R6_2.2.2                  
-    ## [55] GenomicAlignments_1.14.2   compiler_3.4.2
+    ##  [1] Rcpp_0.12.16               highr_0.6                 
+    ##  [3] compiler_3.4.2             XVector_0.18.0            
+    ##  [5] prettyunits_1.0.2          bitops_1.0-6              
+    ##  [7] tools_3.4.2                zlibbioc_1.24.0           
+    ##  [9] progress_1.1.2             biomaRt_2.34.2            
+    ## [11] digest_0.6.15              bit_1.1-12                
+    ## [13] lattice_0.20-35            RSQLite_2.0               
+    ## [15] evaluate_0.10.1            memoise_1.1.0             
+    ## [17] pkgconfig_2.0.1            Matrix_1.2-12             
+    ## [19] DelayedArray_0.4.1         DBI_0.8                   
+    ## [21] yaml_2.1.18                GenomeInfoDbData_1.0.0    
+    ## [23] rtracklayer_1.38.3         httr_1.3.1                
+    ## [25] stringr_1.3.0              knitr_1.20                
+    ## [27] Biostrings_2.46.0          grid_3.4.2                
+    ## [29] rprojroot_1.3-2            bit64_0.9-7               
+    ## [31] R6_2.2.2                   BiocParallel_1.12.0       
+    ## [33] XML_3.98-1.10              RMySQL_0.10.14            
+    ## [35] rmarkdown_1.9              blob_1.1.1                
+    ## [37] matrixStats_0.53.1         GenomicAlignments_1.14.2  
+    ## [39] Rsamtools_1.30.0           backports_1.1.2           
+    ## [41] htmltools_0.3.6            SummarizedExperiment_1.8.1
+    ## [43] assertthat_0.2.0           stringi_1.1.7             
+    ## [45] RCurl_1.95-4.10

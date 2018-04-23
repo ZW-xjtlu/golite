@@ -63,10 +63,11 @@ GOEA(gene_set = eids_sets,
 GO slim is a subset of GO terms that can be defined at [here](http://geneontology.org/ontology/subsets/).
 
 ```{r}
-GOslimEA(gene_set = eids_set,
+GOEA(gene_set = eids_set,
      back_ground = eids_bg,
-       orgDb = org.Hs.eg.db,
-     interpret_term = T)  %>% head(.,10) %>% knitr::kable(.,"markdown")
+     orgDb = org.Hs.eg.db,
+     interpret_term = T,
+     GO_Slim = T)  %>% head(.,10) %>% knitr::kable(.,"markdown")
 ```
 
 you could set `EASE_score = TRUE` to get a more conservative p value.
@@ -74,14 +75,16 @@ you could set `EASE_score = TRUE` to get a more conservative p value.
 For more information of EASE, please see [here](https://david.ncifcrf.gov/helps/functional_annotation.html#fisher).
 
 ```{r}
-GOslimEA(gene_set = eids_sets,
-        back_ground = eids_bg, 
+GOEA(gene_set = eids_sets,
+     back_ground = eids_bg, 
      orgDb = org.Hs.eg.db,
+     GO_Slim = T,
      EASE_Score = F) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "normal hypergeometric")
 
-GOslimEA(gene_set = eids_sets,
+GOEA(gene_set = eids_sets,
          back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
+     GO_Slim = T,
      EASE_Score = T) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "EASE score")
 ```
 

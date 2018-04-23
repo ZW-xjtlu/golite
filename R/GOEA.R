@@ -6,14 +6,21 @@
 #' @param orgDb an \code{OrgDb} object defined by AnnotationDbi.
 #' @param category a character specifying the gene ontology category, can be one in "BP", "CC", and "MF", default "BP".
 #' @param gene_key a character specifying the type of the gene ID, the available types of the keys can be find using \code{keytypes(org.Hs.eg.db)}, default "ENTREZID".
-#' @param min_bg_count term minimum number of occurence in background gene set; default 1.
-#' @param max_bg_count term maximum number of occurence in background gene set; default 1000.
+#' @param min_bg_count term minimum number of occurence in background genes; default 1.
+#' @param max_bg_count term maximum number of occurence in background genes; default Inf.
+#' @param min_gs_count term minimum number of occurence in gene set genes; default 1.
+#' @param max_gs_count term maximum number of occurence in gene set genes; default Inf.
 #' @param EASE_Score whether or not use EASE score method. (a more conservative hypergeomatric test calculation used in DAVID)
 #'for more details please refer to \url{https://david.ncifcrf.gov/helps/functional_annotation.html#fisher}, default FALSE.
 #' @param pvalue_correction method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".
 #' @param interpret_term whether to let the GO term readable, default FALSE.
 #' @param show_gene_name whether to attach readable gene names for each GO term, default FALSE.
-#' @importFrom AnnotationDbi select
+#' @param GO_Slim Wheather to run GSEA only on GO slim terms (a certain subset to GO terms), default FALSE.
+#' @param Slim_ss A character sting of GO terms that define the scope of GO Slim. if not provided, the GO slim would be the generic subset defined in : \url{http://geneontology.org/ontology/subsets/goslim_generic.obo}
+#' @param Exclude_self whether the GO slim terms of its own category i.e. remove terms of c("GO:0008150","GO:0005575","GO:0003674"), default TRUE; only applied when GO_Slim = TRUE.
+#'
+#' @importFrom AnnotationDbi select Term
+#' @importFrom GO.db GOTERM
 #' @export
 GOEA <- function(gene_set,
                  back_ground,
@@ -21,13 +28,16 @@ GOEA <- function(gene_set,
                        category="BP",
                        gene_key = "ENTREZID",
                        min_bg_count = 1,
-                       max_bg_count = 1000,
+                       max_bg_count = Inf,
+                       min_gs_count = 1,
+                       max_gs_count = Inf,
                        EASE_Score= F,
                        pvalue_correction = "BH",
                        interpret_term = F,
                        show_gene_name = F,
-                       attach_slim = F,
-                       exclude_root_slim = F
+                       GO_Slim = F,
+                       Slim_ss = NULL,
+                       Exclude_self = T
                        ) {
 
   if(any(duplicated(back_ground))) {
@@ -44,30 +54,43 @@ GOEA <- function(gene_set,
 
   stopifnot(category %in% c("BP","CC","MF"))
 
-  GO_indx <- gene2go(back_ground,gene_key,orgDb,category)
+  GO_indx <- gene2go(Gene_ID = back_ground,
+                     Gene_key_type = gene_key,
+                     OrgDB = orgDb,
+                     Category = category,
+                     Slim = GO_Slim,
+                     Slim_subset = Slim_ss,
+                     Exclude_self_slim = Exclude_self)
 
   GO_tb <- table(GO_indx$GO)
 
   filter_go <- GO_tb >= min_bg_count & GO_tb <= max_bg_count
 
-  GO_indx <- GO_indx[ GO_indx$GO %in% (names(GO_tb)[filter_go]), ]
+  GO_indx <- GO_indx[ GO_indx$GO %in% (names(GO_tb)[filter_go]), ] #Drop the genes as well as terms not match to back ground filter
 
   Freq_bg <- table( as.character( GO_indx$GO ) )
+
+  bg_genes_num <- sum(Freq_bg)
 
   result_lst <- list()
 
   for(i in 1:length(gene_set) ) {
 
-    Freq_gs <- table( as.character( GO_indx$GO [ GO_indx[[gene_key]] %in% gene_set[[i]] ] ) )
+    indx_match <- GO_indx[[gene_key]] %in% gene_set[[i]]
+
+    Freq_gs <- table( as.character( GO_indx$GO [ indx_match ] ) )
+
+    Freq_gs <- Freq_gs[ Freq_gs >= min_gs_count & Freq_gs <= max_gs_count ]
 
     result_lst[[i]] <- gsea(
       freq_gs = Freq_gs,
       freq_bg = Freq_bg,
-      gs_total_gene = length(gene_set[[i]]),
-      bg_total_gene = length(back_ground),
+      gs_total_gene = sum(Freq_gs),
+      bg_total_gene = bg_genes_num,
       adj_method = pvalue_correction,
       ease = EASE_Score
     )
+
   }
 
   if(show_gene_name) {
@@ -82,9 +105,10 @@ GOEA <- function(gene_set,
   }
 
   if(interpret_term) {
+    term_defs <- Term(GOTERM)
     result_lst <- lapply(result_lst, function(x) {
-      x$term = GO_term_indx[x$term]
-      return(x)
+      x$definition = term_defs[x$term]
+      return(x[,c(1,7,2,3,4,5,6)])
     })
   }
 

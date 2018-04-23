@@ -2,10 +2,11 @@
 % Please edit documentation in R/gene2go.R
 \name{gene2go}
 \alias{gene2go}
-\title{A function that map Gene IDs to GO terms.}
+\title{A function that map Gene IDs to GO terms (including the ancestors).}
 \usage{
 gene2go(Gene_ID, Gene_key_type = "ENTREZID", OrgDB, Category = "BP",
-  Drop_zero_match = F)
+  Drop_zero_match = F, Slim = F, Slim_subset = NULL,
+  Exclude_self_slim = T)
 }
 \arguments{
 \item{Gene_ID}{gene ids to query.}
@@ -17,7 +18,13 @@ gene2go(Gene_ID, Gene_key_type = "ENTREZID", OrgDB, Category = "BP",
 \item{Category}{a character specifying the gene ontology category, can be one in "BP", "CC", and "MF", default "BP".}
 
 \item{Drop_zero_match}{whether to drop the genes that mapped to no terms at all, default FALSE.}
+
+\item{Slim}{Wheather to return a mapping to GO slim terms (a certain subset to GO terms), default FALSE.}
+
+\item{Slim_subset}{A character sting of GO terms that define the scope of GO Slim. if not provided, the GO slim would be the generic subset defined in : \url{http://geneontology.org/ontology/subsets/goslim_generic.obo}}
+
+\item{Exclude_self_slim}{whether the GO slim terms of its own category i.e. remove terms of c("GO:0008150","GO:0005575","GO:0003674").}
 }
 \value{
-a \code{data.frame} that define the mapping relationship.
+a \code{data.frame} that define the mapping relationship between genes and GO terms.
 }

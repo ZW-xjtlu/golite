@@ -3,6 +3,7 @@ library(GSEABase)
 
 fl <- "http://geneontology.org/ontology/subsets/goslim_generic.obo"
 
+
 slim_generic <- getOBOCollection(fl)
 
 library(GO.db)
@@ -30,8 +31,18 @@ devtools::use_data(GO_term_indx,
                      GOslim_gene_lst_CC,
                      GOslim_gene_lst_MF, internal = TRUE, overwrite = TRUE)
 
-#GO slim mapping for each individual genes
+#New inclusion (only one is left...)
+library(GSEABase)
 
+fl <- "http://geneontology.org/ontology/subsets/goslim_generic.obo"
+
+slim_generic <- getOBOCollection(fl)
+
+slim_generic <- slim_generic@ids
+
+devtools::use_data(slim_generic, internal = TRUE, overwrite = TRUE)
+
+#GO slim mapping for each individual genes
 #vi get indx map: BP
 #library(TxDb.Hsapiens.UCSC.hg19.knownGene)
 #library(org.Hs.eg.db)

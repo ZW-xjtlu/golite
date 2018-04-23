@@ -5,9 +5,10 @@
 \title{Vectorized function to enrich GO exact terms with a list of gene sets against a common background.}
 \usage{
 GOEA(gene_set, back_ground, orgDb, category = "BP", gene_key = "ENTREZID",
-  min_bg_count = 1, max_bg_count = 1000, EASE_Score = F,
-  pvalue_correction = "BH", interpret_term = F, show_gene_name = F,
-  attach_slim = F, exclude_root_slim = F)
+  min_bg_count = 1, max_bg_count = Inf, min_gs_count = 1,
+  max_gs_count = Inf, EASE_Score = F, pvalue_correction = "BH",
+  interpret_term = F, show_gene_name = F, GO_Slim = F, Slim_ss = NULL,
+  Exclude_self = T)
 }
 \arguments{
 \item{gene_set}{a list of character vectors contains gene IDs of the query gene sets.}
@@ -20,9 +21,13 @@ GOEA(gene_set, back_ground, orgDb, category = "BP", gene_key = "ENTREZID",
 
 \item{gene_key}{a character specifying the type of the gene ID, the available types of the keys can be find using \code{keytypes(org.Hs.eg.db)}, default "ENTREZID".}
 
-\item{min_bg_count}{term minimum number of occurence in background gene set; default 1.}
+\item{min_bg_count}{term minimum number of occurence in background genes; default 1.}
 
-\item{max_bg_count}{term maximum number of occurence in background gene set; default 1000.}
+\item{max_bg_count}{term maximum number of occurence in background genes; default Inf.}
+
+\item{min_gs_count}{term minimum number of occurence in gene set genes; default 1.}
+
+\item{max_gs_count}{term maximum number of occurence in gene set genes; default Inf.}
 
 \item{EASE_Score}{whether or not use EASE score method. (a more conservative hypergeomatric test calculation used in DAVID)
 for more details please refer to \url{https://david.ncifcrf.gov/helps/functional_annotation.html#fisher}, default FALSE.}
@@ -32,6 +37,12 @@ for more details please refer to \url{https://david.ncifcrf.gov/helps/functional
 \item{interpret_term}{whether to let the GO term readable, default FALSE.}
 
 \item{show_gene_name}{whether to attach readable gene names for each GO term, default FALSE.}
+
+\item{GO_Slim}{Wheather to run GSEA only on GO slim terms (a certain subset to GO terms), default FALSE.}
+
+\item{Slim_ss}{A character sting of GO terms that define the scope of GO Slim. if not provided, the GO slim would be the generic subset defined in : \url{http://geneontology.org/ontology/subsets/goslim_generic.obo}}
+
+\item{Exclude_self}{whether the GO slim terms of its own category i.e. remove terms of c("GO:0008150","GO:0005575","GO:0003674"), default TRUE; only applied when GO_Slim = TRUE.}
 }
 \value{
 a \code{list} of \code{data.frame} for GO exact enrichment result.
