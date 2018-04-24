@@ -1,6 +1,6 @@
 #' @title Vectorized function to enrich GO exact terms with a list of gene sets against a common background.
 #' @return a \code{list} of \code{data.frame} for GO exact enrichment result.
-#' @details \code{GOEA} conduct regular GOEA analysis with Fisher's exact test / permutation test.
+#' @details \code{goea} conduct regular goea analysis with Fisher's exact test / permutation test.
 #' @param gene_set a list of character vectors contains gene IDs of the query gene sets.
 #' @param back_ground a character vector contains the IDs of the background genes.
 #' @param orgDb an \code{OrgDb} object defined by AnnotationDbi.
@@ -22,7 +22,7 @@
 #' @importFrom AnnotationDbi select Term
 #' @importFrom GO.db GOTERM
 #' @export
-GOEA <- function(gene_set,
+goea <- function(gene_set,
                  back_ground,
                        orgDb,
                        category="BP",
