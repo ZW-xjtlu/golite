@@ -22,7 +22,7 @@ library(magrittr)
 library(org.Hs.eg.db)
 ```
 
-Get example randomly sampled gene ids for background and gene set.
+Use randomly sampled gene IDs for gene set and background.
 
 ``` r
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
@@ -34,7 +34,7 @@ eids_bg <- sample(all_eids_hg19, 3500)
 eids_set <- sample(eids_bg,300)
 ```
 
-Run GO enrichment analysis given gene set and background.
+Run GO enrichment analysis given the gene set and background.
 
 ``` r
 GOEA(gene_set = eids_set,

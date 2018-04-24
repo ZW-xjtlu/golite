@@ -26,7 +26,7 @@ library(magrittr)
 library(org.Hs.eg.db)
 ```
 
-Get example randomly sampled gene ids for background and gene set.
+Use randomly sampled gene IDs for gene set and background.
 
 ```{r,message  = F,cache=F, warning=FALSE}
 library(TxDb.Hsapiens.UCSC.hg19.knownGene)
