@@ -15,7 +15,7 @@
 #' @param pvalue_correction method used for multiple hypothesis adjustment, can be one in "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", and "none".
 #' @param interpret_term whether to let the GO term readable, default FALSE.
 #' @param show_gene_name whether to attach readable gene names for each GO term, default FALSE.
-#' @param GO_Slim wheather to run GSEA only on GO slim terms (a certain subset to GO terms), default FALSE.
+#' @param GO_Slim whether to run GSEA only on GO slim terms (a certain subset to GO terms), default FALSE.
 #' @param Slim_ss a character sting of GO terms that define the scope of GO Slim. if not provided, the GO slim would be the generic subset defined in : \url{http://geneontology.org/ontology/subsets/goslim_generic.obo}
 #' @param Exclude_self whether the GO slim terms of its own category i.e. remove terms of c("GO:0008150","GO:0005575","GO:0003674"), default TRUE; only applied when GO_Slim = TRUE.
 #'

@@ -18,15 +18,38 @@ all_eids_hg19 <- names(genes(txdb))
 
 set.seed(1)
 eids_bg <- sample(all_eids_hg19, 3500)
-eids_set <- sample(eids_bg,300)
+eids_set <- lapply(1:100, function(x) sample(eids_bg,300))
 
-gose_result1 <- GOEA(gene_set = eids_set,
+gose_result1 <-  goea(gene_set = eids_set[[1]],
      back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
      interpret_term = T,
      min_gs_count = 10,
-     max_gs_count = 1000,
-     GO_Slim = F)
+     max_gs_count = 500,
+     GO_Slim = F) 
+
+library(clusterProfiler)
+
+ego <- enrichGO(gene          = eids_set[[1]],
+                universe      = eids_bg,
+                OrgDb         = org.Hs.eg.db,
+                ont           = "BP",
+                pAdjustMethod = "BH",
+                pvalueCutoff  = 1,
+                qvalueCutoff  = 1,
+                readable      = TRUE)
+
+readable <- as.data.frame(ego)[,c("ID","Description","pvalue")]
+
+head(readable)
+
+plot_df <- data.frame( 
+  pvalue_golite = gose_result1$p,
+  pvalue_cp = readable$pvalue[ match(as.character( gose_result1$term),readable$ID) ] )
+
+
+
+cor.test(plot_df[,1],plot_df[,2])
 
 
 length(readable$ID)
@@ -37,7 +60,7 @@ cor.test( gose_result1$p,readable$pvalue[match(gose_result1$term, readable$ID)] 
 
 head(gose_result1)
 
-library(clusterProfiler)
+
 set.seed = 1
 ego <- enrichGO(gene          = eids_set,
                 universe      = eids_bg,
