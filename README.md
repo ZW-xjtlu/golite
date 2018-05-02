@@ -34,7 +34,7 @@ eids_bg <- sample(all_eids_hg19, 3500)
 eids_set <- sample(eids_bg,300)
 ```
 
-Run GO enrichment analysis given the gene set and background.
+Run GO enrichment analysis given gene set and background.
 
 ``` r
 goea(gene_set = eids_set,
@@ -47,13 +47,13 @@ goea(gene_set = eids_set,
 
 <table>
 <colgroup>
+<col width="10%" />
+<col width="49%" />
+<col width="7%" />
+<col width="7%" />
+<col width="9%" />
+<col width="9%" />
 <col width="5%" />
-<col width="71%" />
-<col width="4%" />
-<col width="4%" />
-<col width="5%" />
-<col width="5%" />
-<col width="2%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -69,7 +69,7 @@ goea(gene_set = eids_set,
 <tbody>
 <tr class="odd">
 <td align="left"><a href="GO:0009967" class="uri">GO:0009967</a></td>
-<td align="left">RNA polymerase III type 3 promoter transcriptional preinitiation complex assembly</td>
+<td align="left">positive regulation of signal transduction</td>
 <td align="right">29</td>
 <td align="right">191</td>
 <td align="right">0.0012078</td>
@@ -78,7 +78,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0010647" class="uri">GO:0010647</a></td>
-<td align="left">transcription factor activity, RNA polymerase II core promoter proximal region sequence-specific binding involved in preinitiation complex assembly</td>
+<td align="left">positive regulation of cell communication</td>
 <td align="right">32</td>
 <td align="right">225</td>
 <td align="right">0.0020695</td>
@@ -87,7 +87,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="odd">
 <td align="left"><a href="GO:0023056" class="uri">GO:0023056</a></td>
-<td align="left">dopamine neurotransmitter receptor activity, coupled via Gi/Go</td>
+<td align="left">positive regulation of signaling</td>
 <td align="right">32</td>
 <td align="right">225</td>
 <td align="right">0.0020695</td>
@@ -96,7 +96,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0006672" class="uri">GO:0006672</a></td>
-<td align="left">bubble DNA binding</td>
+<td align="left">ceramide metabolic process</td>
 <td align="right">3</td>
 <td align="right">4</td>
 <td align="right">0.0023288</td>
@@ -105,7 +105,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="odd">
 <td align="left"><a href="GO:2001235" class="uri">GO:2001235</a></td>
-<td align="left">chorismate mutase activity</td>
+<td align="left">positive regulation of apoptotic signaling pathway</td>
 <td align="right">7</td>
 <td align="right">24</td>
 <td align="right">0.0030061</td>
@@ -114,7 +114,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0045859" class="uri">GO:0045859</a></td>
-<td align="left">mucosal immune response</td>
+<td align="left">regulation of protein kinase activity</td>
 <td align="right">17</td>
 <td align="right">101</td>
 <td align="right">0.0045006</td>
@@ -123,7 +123,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="odd">
 <td align="left"><a href="GO:0071900" class="uri">GO:0071900</a></td>
-<td align="left">bundle of His development</td>
+<td align="left">regulation of protein serine/threonine kinase activity</td>
 <td align="right">12</td>
 <td align="right">61</td>
 <td align="right">0.0045852</td>
@@ -132,7 +132,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0043408" class="uri">GO:0043408</a></td>
-<td align="left">gene conversion of immunoglobulin genes</td>
+<td align="left">regulation of MAPK cascade</td>
 <td align="right">15</td>
 <td align="right">85</td>
 <td align="right">0.0047575</td>
@@ -141,7 +141,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="odd">
 <td align="left"><a href="GO:1902531" class="uri">GO:1902531</a></td>
-<td align="left">11-beta-hydroxysteroid dehydrogenase [NAD(P)] activity</td>
+<td align="left">regulation of intracellular signal transduction</td>
 <td align="right">34</td>
 <td align="right">256</td>
 <td align="right">0.0047870</td>
@@ -150,7 +150,7 @@ goea(gene_set = eids_set,
 </tr>
 <tr class="even">
 <td align="left"><a href="GO:0060538" class="uri">GO:0060538</a></td>
-<td align="left">positive regulation of humoral immune response</td>
+<td align="left">skeletal muscle organ development</td>
 <td align="right">6</td>
 <td align="right">20</td>
 <td align="right">0.0051416</td>
@@ -195,120 +195,18 @@ goea(gene_set = eids_set,
      GO_Slim = T)  %>% head(.,10) %>% knitr::kable(.,"markdown")
 ```
 
-<table>
-<colgroup>
-<col width="8%" />
-<col width="57%" />
-<col width="6%" />
-<col width="6%" />
-<col width="8%" />
-<col width="8%" />
-<col width="4%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">term</th>
-<th align="left">definition</th>
-<th align="right">freq_gs</th>
-<th align="right">freq_bg</th>
-<th align="right">p</th>
-<th align="right">adj_BH</th>
-<th align="right">OR</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><a href="GO:0006629" class="uri">GO:0006629</a></td>
-<td align="left">regulation of mitotic recombination</td>
-<td align="right">25</td>
-<td align="right">187</td>
-<td align="right">0.0141012</td>
-<td align="right">0.5162342</td>
-<td align="right">1.56</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0008219" class="uri">GO:0008219</a></td>
-<td align="left">transition metal ion transport</td>
-<td align="right">39</td>
-<td align="right">327</td>
-<td align="right">0.0156435</td>
-<td align="right">0.5162342</td>
-<td align="right">1.39</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0048856" class="uri">GO:0048856</a></td>
-<td align="left">regulation of transcription involved in G1/S transition of mitotic cell cycle</td>
-<td align="right">83</td>
-<td align="right">848</td>
-<td align="right">0.0683518</td>
-<td align="right">0.9268498</td>
-<td align="right">1.14</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0040007" class="uri">GO:0040007</a></td>
-<td align="left">mitotic sister chromatid segregation</td>
-<td align="right">17</td>
-<td align="right">140</td>
-<td align="right">0.0852517</td>
-<td align="right">0.9268498</td>
-<td align="right">1.42</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0007165" class="uri">GO:0007165</a></td>
-<td align="left">acyl binding</td>
-<td align="right">77</td>
-<td align="right">795</td>
-<td align="right">0.0988005</td>
-<td align="right">0.9268498</td>
-<td align="right">1.13</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0021700" class="uri">GO:0021700</a></td>
-<td align="left">citrulline metabolic process</td>
-<td align="right">6</td>
-<td align="right">40</td>
-<td align="right">0.1221631</td>
-<td align="right">0.9268498</td>
-<td align="right">1.75</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0006790" class="uri">GO:0006790</a></td>
-<td align="left">mitotic spindle elongation</td>
-<td align="right">7</td>
-<td align="right">51</td>
-<td align="right">0.1415087</td>
-<td align="right">0.9268498</td>
-<td align="right">1.60</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0043473" class="uri">GO:0043473</a></td>
-<td align="left">DNA damage checkpoint</td>
-<td align="right">2</td>
-<td align="right">8</td>
-<td align="right">0.1453356</td>
-<td align="right">0.9268498</td>
-<td align="right">2.92</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="GO:0071554" class="uri">GO:0071554</a></td>
-<td align="left">mitotic telophase</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">0.1641360</td>
-<td align="right">0.9268498</td>
-<td align="right">5.83</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="GO:0007049" class="uri">GO:0007049</a></td>
-<td align="left">cell wall mannoprotein biosynthetic process</td>
-<td align="right">26</td>
-<td align="right">250</td>
-<td align="right">0.1651823</td>
-<td align="right">0.9268498</td>
-<td align="right">1.21</td>
-</tr>
-</tbody>
-</table>
+| term         | definition                           |  freq\_gs|  freq\_bg|          p|    adj\_BH|    OR|
+|:-------------|:-------------------------------------|---------:|---------:|----------:|----------:|-----:|
+| <GO:0006629> | lipid metabolic process              |        25|       187|  0.0141012|  0.5162342|  1.56|
+| <GO:0008219> | cell death                           |        39|       327|  0.0156435|  0.5162342|  1.39|
+| <GO:0048856> | anatomical structure development     |        83|       848|  0.0683518|  0.9268498|  1.14|
+| <GO:0040007> | growth                               |        17|       140|  0.0852517|  0.9268498|  1.42|
+| <GO:0007165> | signal transduction                  |        77|       795|  0.0988005|  0.9268498|  1.13|
+| <GO:0021700> | developmental maturation             |         6|        40|  0.1221631|  0.9268498|  1.75|
+| <GO:0006790> | sulfur compound metabolic process    |         7|        51|  0.1415087|  0.9268498|  1.60|
+| <GO:0043473> | pigmentation                         |         2|         8|  0.1453356|  0.9268498|  2.92|
+| <GO:0071554> | cell wall organization or biogenesis |         1|         2|  0.1641360|  0.9268498|  5.83|
+| <GO:0007049> | cell cycle                           |        26|       250|  0.1651823|  0.9268498|  1.21|
 
 you could set `EASE_score = TRUE` to get a more conservative p value.
 

@@ -18,7 +18,7 @@ install_github("ZhenWei10/golite")
 
 ## Run GO enrichment analysis
 
-The necessary input of GOEA should be the gene set gene ID, background gene ID, and the [orgDb object](http://www.bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html).
+The necessary input of goea should be the gene set gene ID, background gene ID, and the [orgDb object](http://www.bioconductor.org/packages/release/data/annotation/html/org.Hs.eg.db.html).
 
 ```{r,message=FALSE}
 library(golite)
@@ -41,7 +41,7 @@ eids_set <- sample(eids_bg,300)
 Run GO enrichment analysis given gene set and background.
 
 ```{r}
-GOEA(gene_set = eids_set,
+goea(gene_set = eids_set,
      back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
      interpret_term = T) %>% head(.,10) %>% knitr::kable(.,"markdown")
@@ -52,7 +52,7 @@ The function can be vectorized, i.e. the input can be a `list` of multiple gene 
 ```{r}
 eids_sets <- lapply(1:10,function(x) sample(eids_bg,300)) 
 
-GOEA(gene_set = eids_sets,
+goea(gene_set = eids_sets,
      back_ground = eids_bg,
      orgDb = org.Hs.eg.db) %>% summary
 ```
@@ -63,7 +63,7 @@ GOEA(gene_set = eids_sets,
 GO slim is a subset of GO terms that can be defined at [here](http://geneontology.org/ontology/subsets/).
 
 ```{r}
-GOEA(gene_set = eids_set,
+goea(gene_set = eids_set,
      back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
      interpret_term = T,
@@ -75,13 +75,13 @@ you could set `EASE_score = TRUE` to get a more conservative p value.
 For more information of EASE, please see [here](https://david.ncifcrf.gov/helps/functional_annotation.html#fisher).
 
 ```{r}
-GOEA(gene_set = eids_sets,
+goea(gene_set = eids_sets,
      back_ground = eids_bg, 
      orgDb = org.Hs.eg.db,
      GO_Slim = T,
      EASE_Score = F) %>% lapply(.,function(x)x$p) %>% unlist %>% hist(main = "normal hypergeometric")
 
-GOEA(gene_set = eids_sets,
+goea(gene_set = eids_sets,
          back_ground = eids_bg,
      orgDb = org.Hs.eg.db,
      GO_Slim = T,
