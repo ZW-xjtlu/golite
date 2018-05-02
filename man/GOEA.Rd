@@ -38,7 +38,7 @@ for more details please refer to \url{https://david.ncifcrf.gov/helps/functional
 
 \item{show_gene_name}{whether to attach readable gene names for each GO term, default FALSE.}
 
-\item{GO_Slim}{wheather to run GSEA only on GO slim terms (a certain subset to GO terms), default FALSE.}
+\item{GO_Slim}{whether to run GSEA only on GO slim terms (a certain subset to GO terms), default FALSE.}
 
 \item{Slim_ss}{a character sting of GO terms that define the scope of GO Slim. if not provided, the GO slim would be the generic subset defined in : \url{http://geneontology.org/ontology/subsets/goslim_generic.obo}}
 

@@ -107,7 +107,7 @@ goea <- function(gene_set,
   if(interpret_term) {
     term_defs <- Term(GOTERM)
     result_lst <- lapply(result_lst, function(x) {
-      x$definition = term_defs[x$term]
+      x$definition = term_defs[as.character(x$term)]
       return(x[,c(1,7,2,3,4,5,6)])
     })
   }

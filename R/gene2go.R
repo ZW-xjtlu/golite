@@ -61,6 +61,7 @@ gene2go <- function(Gene_ID,
                    GO = unlist(goancest_pergene)
                   )
 
+
   if(!Drop_zero_match) {
 
   indx_missing = !Gene_ID %in% Map_result$ENTREZID
